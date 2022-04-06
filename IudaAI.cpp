@@ -1,20 +1,38 @@
-// IudaAI.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 
 #include <iostream>
+#include "yolo_wrapper.h"
+
+#include <opencv2/opencv.hpp>            // C++
+#include <opencv2/core/version.hpp>
+#include <opencv2/videoio/videoio.hpp>
+#define OPENCV_VERSION CVAUX_STR(CV_VERSION_MAJOR)"" CVAUX_STR(CV_VERSION_MINOR)"" CVAUX_STR(CV_VERSION_REVISION)
+#pragma comment(lib, "opencv_world" OPENCV_VERSION ".lib")
+
+
+#include <opencv2/opencv.hpp>            // C++
+#include <opencv2/core/version.hpp>
+#include <opencv2/videoio/videoio.hpp>
+#include <thread>
+
+#include "CStepThreadReplaceable.h"
+#include "CReplaceableObject.h"
+#include "yolo_wrapper.h"
+#include "CJuda.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    std::string  names_file = "data/coco.names";
+    std::string  cfg_file = "yolov3.cfg";
+    std::string  weights_file = "yolov3.weights";
+
+
+    CJuda JudaAI;
+
+    JudaAI.InitDetector(names_file, cfg_file, weights_file);
+
+    JudaAI.InitStepThreads();
+
+    int n = 0;
+    std::cin >> n;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

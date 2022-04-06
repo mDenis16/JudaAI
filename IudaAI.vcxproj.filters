@@ -18,5 +18,25 @@
     <ClCompile Include="IudaAI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="yolo_wrapper.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CJuda.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CJuda.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CReplaceableObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CStepThreadReplaceable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\..\darknetv2\build\darknet\x64\yolo_cpp_dll.lib" />
   </ItemGroup>
 </Project>
