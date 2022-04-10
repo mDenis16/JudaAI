@@ -120,6 +120,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;OPENCV;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,13 +146,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CJuda.cpp" />
+    <ClCompile Include="CLineTracker.cpp" />
+    <ClCompile Include="CSettings.cpp" />
+    <ClCompile Include="CTracker.cpp" />
     <ClCompile Include="IudaAI.cpp" />
     <ClCompile Include="yolo_wrapper.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CJuda.h" />
+    <ClInclude Include="CLineTracker.h" />
     <ClInclude Include="CReplaceableObject.h" />
+    <ClInclude Include="CSettings.h" />
     <ClInclude Include="CStepThreadReplaceable.h" />
+    <ClInclude Include="CTracker.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\..\..\darknetv2\build\darknet\x64\yolo_cpp_dll.lib" />

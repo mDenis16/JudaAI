@@ -24,6 +24,15 @@
     <ClCompile Include="CJuda.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CTracker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CLineTracker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CSettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CJuda.h">
@@ -33,6 +42,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CStepThreadReplaceable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CTracker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLineTracker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CSettings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

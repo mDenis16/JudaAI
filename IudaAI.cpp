@@ -17,7 +17,10 @@
 #include "CStepThreadReplaceable.h"
 #include "CReplaceableObject.h"
 #include "yolo_wrapper.h"
+#include "CTracker.h"
+#include "CLineTracker.h"
 #include "CJuda.h"
+
 
 int main()
 {
@@ -27,12 +30,15 @@ int main()
 
 
     CJuda JudaAI;
+    
 
     JudaAI.InitDetector(names_file, cfg_file, weights_file);
 
     JudaAI.InitStepThreads();
 
-    int n = 0;
-    std::cin >> n;
+  
+    int i = 0;
+    std::cin >> i;
+   
 }
 

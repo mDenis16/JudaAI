@@ -663,6 +663,7 @@ public:
                 cv::Mat dst_roi = draw_mat(dst_rect_roi);
                 dst.copyTo(dst_roi);
 
+
                 cv::Scalar color = obj_id_to_color(prev_box.obj_id);
                 int thickness = (prev_box.current_detection) ? 5 : 1;
                 cv::rectangle(draw_mat, dst_rect_roi, color, thickness);

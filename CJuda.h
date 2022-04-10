@@ -4,21 +4,22 @@
 
 #include <atomic>
 
+
 struct image_t;
 struct bbox_t;
 
 
+
 struct CDetectionData {
-    cv::Mat cap_frame;
-    std::shared_ptr<image_t> det_image;
-    std::vector<bbox_t> result_vec;
-    cv::Mat draw_frame;
-    bool new_detection;
-    uint64_t frame_id;
-    bool exit_flag;
-    cv::Mat zed_cloud;
-    std::queue<cv::Mat> track_optflow_queue;
-    CDetectionData() : new_detection(false), exit_flag(false) {}
+    cv::Mat CaptureFrame;
+    std::shared_ptr<image_t> DetectionImage;
+    cv::Mat Originalframe;
+    std::vector<bbox_t> Results;
+    cv::Mat DrawFrame;
+    bool UpdatedDetection;
+    uint64_t FrameId;
+    bool Exiting;
+    CDetectionData() : UpdatedDetection(false), Exiting(false) {}
 };
 
 
@@ -28,11 +29,29 @@ class CJuda
 public:
     CJuda() {};
 
+    struct SMeasure {
+        std::chrono::steady_clock::time_point Start, End;
+        std::atomic<int> FpsCapture{};
+        std::atomic<int> FpsDetection{};
+        std::atomic<int> CaptureCounter{};
+        std::atomic<int> DetectionCounter{};
+    };
+
+    SMeasure Measure;
+
     cv::VideoCapture CaptureSource;
+
+    CTracker Tracker;
+
+    CLineTracker LineTracker;
+
+    track_kalman_t Kalman;
 
 	void InitStepThreads();
 
     void InitDetector(const std::string names_file, const std::string cfg_file, const std::string weights_file);
+
+    std::vector<std::string> ObjectNamesFromFile(std::string const filename);
 
     CStepThreadReplaceable<CDetectionData> Capture;
     CStepThreadReplaceable<CDetectionData> Drawing;
@@ -40,6 +59,7 @@ public:
     CStepThreadReplaceable<CDetectionData> Preparing;
     CStepThreadReplaceable<CDetectionData> Showing;
 
+    std::vector<cv::String> Names;
 
     void OnCapture();
 
@@ -54,5 +74,7 @@ public:
 
     cv::Mat CurrentFrame;
     cv::Size FrameSize;
+
+    std::atomic<bool> Exiting{};
 };
 
